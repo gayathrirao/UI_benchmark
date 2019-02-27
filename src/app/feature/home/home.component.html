@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row app-header">
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 text-left logo-text">
+      <p>Trainings</p>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-6 col-xs-6 lgoin-btn">
+      <!-- <input type="button" class="btn btn-primary traning-login-right" value="Login"
+          (click)="openVerticallyCentered(content)" name="login"> -->
+      <i title="Logout" class="fa fa-sign-out btn btn-primary traning-login-right" (click)="logout()"
+        aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="container traning-container">
+    <div class="row calender">
+      <div class="col-sm-1 col-md-1 col-lg-1"></div>
+      <div class="col-sm-10 col-md-10 col-lg-10 custom-tr-bg">
+        <ngb-tabset>
+          <ngb-tab title="Trainings">
+            <ng-template ngbTabContent>
+              <app-calender *ngIf="events" [eventData]=events></app-calender>
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab title="Profile">
+            <ng-template ngbTabContent>
+                <app-profile></app-profile>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+      <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    </div>
+  </div>
+  <div class="row app-footer">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      @Copyrights SAPIENT, Team3
+    </div>
+  </div>
+</div>

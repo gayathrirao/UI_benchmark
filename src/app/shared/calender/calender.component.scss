@@ -1,0 +1,20 @@
+.custom-cell-cls{
+    position: relative;
+    ul.custom-content{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        li {
+            list-style-type: none;
+            position: relative;
+            right: 38px;
+            margin-top: 2px;
+            font-size: 11px;
+            border: 1px solid #0689bb;
+            width: 100%;
+            max-height: 18px;
+            overflow: hidden;
+        }
+    }
+}
+    
