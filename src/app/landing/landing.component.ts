@@ -45,10 +45,11 @@ export class LandingComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
   });
-    this.test$ = this.http.get(environment.baseUrl+environment.api.trainings)
+    this.test$ = this.http.get('http://WKWIN2789915.global.publicisgroupe.net:8762/api/training/all')
       .pipe(
         map((data: any) => {
-          return data.activityName.map((fnre) => {
+          console.log(data);
+          return data.map((fnre) => {
             return {
               allDay: true,
               color: { primary: "#e3bc08", secondary: "#FDF1BA" },
