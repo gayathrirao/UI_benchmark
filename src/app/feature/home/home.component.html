@@ -17,7 +17,27 @@
         <ngb-tabset>
           <ngb-tab title="Trainings">
             <ng-template ngbTabContent>
-              <app-calender *ngIf="events" [eventData]=events></app-calender>
+              <!-- <app-calender *ngIf="events" [eventData]=events></app-calender> -->
+              <table class="table table-striped custom-table-br" *ngIf="trainingList">
+                <thead>
+                <tr>
+                  <th scope="col">Rank</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">code</th>
+                  <th scope="col">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let list of trainingList| orderBy:order:ascending">
+                  <td>
+                    {{list.rank}}
+                  </td>
+                  <td>{{list.training.name}}</td>
+                  <td>{{list.training.code}}</td>
+                  <td>{{list.training.from | date: 'dd/MM/yyyy'}} - {{list.training.to | date: 'dd/MM/yyyy'}}</td>
+                </tr>
+                </tbody>
+              </table>
             </ng-template>
           </ngb-tab>
           <ngb-tab title="Profile">

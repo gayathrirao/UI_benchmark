@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://localhost:3010/',
+  baseUrl: 'http://wkwin2789915.global.publicisgroupe.net:8762/api/',
   api: {
-    trainings: 'posts/1',
-    profile: 'posts/2'
+    trainings: 'training/all',
+    profile: 'trainingrecommendation/candidate/email/'
   }
 };

@@ -9,6 +9,8 @@ import { CommonModelComponent } from './shared/common-model/common-model.compone
 import { Routes, RouterModule } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DataShareService } from './data-share.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -31,9 +33,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     AppCalenderModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule
   ],
   bootstrap: [AppComponent],
+  providers:[DataShareService],
   exports:[RouterModule]
 })
 export class AppModule { }

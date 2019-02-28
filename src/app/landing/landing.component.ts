@@ -11,6 +11,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { DataShareService } from '../data-share.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 function getTimezoneOffsetString(date: Date): string {
@@ -34,7 +36,7 @@ export class LandingComponent implements OnInit {
   events: object = null;
   viewDate: Date = new Date();
   loginForm: FormGroup;
-  constructor(private http: HttpClient, private modalService: NgbModal, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private http: HttpClient, private modalService: NgbModal, private formBuilder: FormBuilder, private router: Router, private dataShare: DataShareService, private spinner: NgxSpinnerService) {
 
   }
   openVerticallyCentered(content) {
@@ -45,10 +47,10 @@ export class LandingComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]]
   });
-    this.test$ = this.http.get('http://WKWIN2789915.global.publicisgroupe.net:8762/api/training/all')
+  this.spinner.show();
+    this.test$ = this.http.get(environment.baseUrl+environment.api.trainings)
       .pipe(
         map((data: any) => {
-          console.log(data);
           return data.map((fnre) => {
             return {
               allDay: true,
@@ -64,11 +66,15 @@ export class LandingComponent implements OnInit {
     this.test$.subscribe(data => {
       this.events = data;
       //console.log(this.events);
+      this.spinner.hide();
+    }, () => {
+      this.spinner.hide();
     });
   }
   login(){
     let formValue = this.loginForm;
     if(formValue.valid) {
+      this.dataShare.setuserDetails(formValue.controls.email);
       this.router.navigateByUrl('/home');
       this.modalService.dismissAll();
     }
